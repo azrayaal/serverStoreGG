@@ -5,7 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('bwa-storegg-server:server');
+var debug = require('debug')('storegg-server:server');
 var http = require('http');
 const db = require('../db');
 
@@ -13,7 +13,7 @@ const db = require('../db');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '4000');
+var port = normalizePort(process.env.PORT || '5501');
 app.set('port', port);
 
 /**
