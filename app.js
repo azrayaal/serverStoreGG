@@ -3,12 +3,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const methodOverride = require('method-override')
-const session = require('express-session')
+const methodOverride = require('method-override');
+const session = require('express-session');
 const flash = require('connect-flash');
-var cors = require('cors')
-
-
+var cors = require('cors');
 
 const dashboardRouter = require('./app/dashboard/router');
 const categoryRouter = require('./app/category/router');
@@ -22,21 +20,23 @@ const playerRouter = require('./app/player/router');
 const authRouter = require('./app/auth/router');
 
 const app = express();
-const URL = `/api/v1`
-app.use(cors())
+const URL = `/api/v1`;
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: true,
-  cookie: {}
-}))
+app.use(
+  session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {},
+  })
+);
 app.use(flash());
-app.use(methodOverride('_method'))
+app.use(methodOverride('_method'));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
