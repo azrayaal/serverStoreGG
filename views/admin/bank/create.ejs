@@ -1,6 +1,5 @@
-<%- include ../../partials/header.ejs %>
-<%- include ../../partials/navbar.ejs %>
-<%- include ../../partials/sidebar.ejs %>
+<%- include ../../partials/header.ejs %> <%- include ../../partials/navbar.ejs %> <%- include ../../partials/sidebar.ejs %>
+
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
@@ -13,11 +12,12 @@
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/">Home</a></li>
             <li class="breadcrumb-item"><a href="/bank">Bank</a></li>
-            <li class="breadcrumb-item active">Tambah</li>
+            <li class="breadcrumb-item active">Create</li>
           </ol>
         </div>
       </div>
-    </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.container-fluid -->
   </section>
 
   <!-- Main content -->
@@ -25,32 +25,52 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
-          <div class="card card-primary">
-            <div class="card-header">
-              <h3 class="card-title">Form tambah bank</h3>
-            </div>
+          <div class="card">
             <!-- /.card-header -->
-            <!-- form start -->
-            <form action="/bank/create" method="POST">
-              <div class="card-body">
-                <div class="form-group">
-                  <label for="name">Nama pemilik</label>
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Masukan nama pemilik" required>
+            <div class="card-body">
+              <div class="card card-primary">
+                <div class="card-header">
+                  <h3 class="card-title">Form tambah data Bank</h3>
                 </div>
-                <div class="form-group">
-                  <label for="bankName">Nama bank</label>
-                  <input type="text" name="bankName" class="form-control" id="bankName" placeholder="Masukan nama bank" required>
-                </div>
-                <div class="form-group">
-                  <label for="noRekening">Nomor rekening</label>
-                  <input type="number" name="noRekening" class="form-control" id="noRekening" placeholder="Masukan nomor rekening" required>
-                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form action="/bank/create" method="POST">
+                  <div class="card-body">
+                    <div class="form-group">
+                      <label for="name">Nama Pemilik</label>
+                      <input type="text" name="name" class="form-control" id="coinQuantity" placeholder="Pemilik Rekening" required />
+                    </div>
+
+                    <div class="form-group">
+                      <label>Nama Bank </label>
+                      <select class="form-control" style="width: 100%" name="nameBank" required>
+                        <option selected="selected">Pilih Bank</option>
+                        <option value="BCA">BCA</option>
+                        <option value="BRI">BRI</option>
+                        <option value="MANDIRI">MANDIRI</option>
+                        <option value="BSI">BSI</option>
+                        <option value="BNI">BNI</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="price">Masukan No Rekening</label>
+                      <input type="number" name="noRekening" class="form-control" id="noRekening" placeholder="No Rekening" required />
+                    </div>
+                  </div>
+
+                  <div class="card-footer">
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Simpan</button>
+                    <button type="submit" class="btn btn-secondary">
+                      <a href="/bank" style="color: white"><i class="fa fa-undo"></i> Cancel</a>
+                    </button>
+                  </div>
+                </form>
               </div>
-              <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Simpan</button>
-              </div>
-            </form>
+            </div>
           </div>
+          <!-- /.card -->
+          <!-- /.card -->
         </div>
         <!-- /.col -->
       </div>
@@ -61,5 +81,87 @@
   <!-- /.content -->
 </div>
 
-<%- include ../../partials/footer.ejs %>
-<%- include ../../partials/js.ejs %>
+<%- include ../../partials/footer.ejs %> <%- include ../../partials/js.ejs %><%- include ../../partials/header.ejs %> <%- include ../../partials/navbar.ejs %> <%- include ../../partials/sidebar.ejs %>
+
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>nominal</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/nominal">Nominal</a></li>
+            <li class="breadcrumb-item active">Create</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <!-- /.card-header -->
+            <div class="card-body">
+              <div class="card card-primary">
+                <div class="card-header">
+                  <h3 class="card-title">Form tambah nominal</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form action="/nominal/create" method="POST">
+                  <div class="card-body">
+                    <div class="form-group">
+                      <label>Nama coin </label>
+                      <select class="form-control select2" style="width: 100%" name="coinName" required>
+                        <option selected="selected">Pilih coin</option>
+                        <option value="Doge">Doge</option>
+                        <option value="BTC">BTC</option>
+                        <option value="Luna">Luna</option>
+                        <option value="Tennessee">Tennessee</option>
+                        <option value="Mora">Mora</option>
+                        <option value="Honkai">Honkai</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="coinQuantity">jumlah nominal</label>
+                      <input type="number" name="coinQuantity" class="form-control" id="coinQuantity" placeholder="Masukan jumlah nominal" required />
+                    </div>
+                    <div class="form-group">
+                      <label for="price">Masukan harga</label>
+                      <input type="number" name="price" class="form-control" id="price" placeholder="Masukan harga" required />
+                    </div>
+                  </div>
+
+                  <div class="card-footer">
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Simpan</button>
+                    <button type="submit" class="btn btn-secondary">
+                      <a href="/nominal" style="color: white"><i class="fa fa-undo"></i> Cancel</a>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- /.card -->
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+
+<%- include ../../partials/footer.ejs %> <%- include ../../partials/js.ejs %>

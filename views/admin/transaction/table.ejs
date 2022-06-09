@@ -1,80 +1,90 @@
-<table id="example2" class="table table-bordered table-hover">
+<table id="example2" class="table table-bordered table-hover table-striped" style="width: 100%">
   <thead>
     <tr>
-      <th>No.</th>
-      <th>Nama game</th>
+      <th style="width: 7%">No</th>
+      <th>Nama Game</th>
       <th>Item</th>
-      <th>Total harga</th>
+      <th>Total</th>
       <th>Status</th>
-      <th>Nama player</th>
-      <th>Aksi</th>
+      <th>Nama Player</th>
+      <th style="width: 21%">Actions</th>
     </tr>
   </thead>
   <tbody>
-    <% for(let i=0; i < transaction.length; i++){ %>
-      <tr>
-        <td>
-          <%= i + 1 %>
-        </td>
+    <% for(let i = 0; i < transaction.length; i++){ %>
+    <tr>
+      <td><%= i + 1 %></td>
+      <td>
+        <ul class="list-inline">
+          <li class="list-inline-item">
+            <img width="48px" height="48px" src="http://localhost:3000/uploads/<%= transaction[i].historyVoucherTopup.thumbnail %> " alt="" />
+          </li>
+        </ul>
+        <%= transaction[i]?.historyVoucherTopup?.gameName %>
+        <br />
+        <%= transaction[i]?.historyVoucherTopup?.category %>
+      </td>
 
-        <td>
-          <ul class="list-inline">
-            <li class="list-inline-item">
-              <img width="48px" height="48px"
-                src="https://bwa-storegg.herokuapp.com/uploads/<%= transaction[i].historyVoucherTopup.thumbnail %>"
-                alt="thumbnail">
-            </li>
-          </ul>
-          <%= transaction[i]?.historyVoucherTopup?.gameName %>
-            <br>
-            <%= transaction[i]?.historyVoucherTopup?.category %>
-        </td>
-        <td>
-          <%= transaction[i]?.historyVoucherTopup?.coinQuantity %>
-            <%= transaction[i]?.historyVoucherTopup?.coinName %>
-        </td>
-        <td>
-          <%= transaction[i].value %>
-        </td>
+      <td>
+        <% if(transaction[i].historyVoucherTopup.coinName === 'SILVER') { %>
+        <span class="badge badge-secondary">
+          <%= transaction[i].historyVoucherTopup.coinQuantity %>
+          <br />
+          <%= transaction[i].historyVoucherTopup.coinName %>
+        </span>
+        <% } else if( transaction[i].historyVoucherTopup.coinName === 'GOLD') { %>
+        <span class="badge badge-warning">
+          <%= transaction[i].historyVoucherTopup.coinQuantity %>
+          <br />
+          <%= transaction[i].historyVoucherTopup.coinName %>
+        </span>
+        <% } else {%>
+        <span class="badge badge-primary">
+          <%= transaction[i].historyVoucherTopup.coinQuantity %>
+          <br />
+          <%= transaction[i].historyVoucherTopup.coinName %>
+        </span>
+        <% } %>
+      </td>
 
+      <td><%= transaction[i].value %></td>
 
-        <td>
-          <% if(transaction[i].status==='pending' ) { %>
-            <span class="badge badge-warning">
-              <%= transaction[i].status %>
-            </span>
-            <% } else if(transaction[i].status==='success' ) { %>
-              <span class="badge badge-success">
-                <%= transaction[i].status %>
-              </span>
-              <% } else { %>
-                <span class="badge badge-danger">
-                  <%= transaction[i].status %>
-                </span>
-                <%} %>
-        </td>
+      <td>
+        <% if(transaction[i]. status === 'success'){ %>
+        <span class="badge badge-success"> <%= transaction[i].status %> </span>
+        <% } else if(transaction[i]. status === 'pending'){ %>
+        <span class="badge badge-warning"> <%= transaction[i].status %> </span>
+        <% } else {%>
+        <span class="badge badge-danger"> <%= transaction[i].status %> </span>
+        <% } %>
+      </td>
 
-        <td>
-          <%= transaction[i]?.player?.name ?? '-' %>
-        </td>
+      <td><%= transaction[i]?.player?.name ?? '-' %></td>
 
-        <td>
-          <form style="display: inline-block;"
-            action="/transaction/status/<%= transaction[i]._id %>?status=failed&_method=PUT" method="POST">
-            <button class="btn btn-danger btn-sm" type="submit">
-              <i class="fas fa-times-circle"></i>
-              Tolak
-            </button>
-          </form>
-          <form style="display: inline-block;"
-            action="/transaction/status/<%= transaction[i]._id %>?status=success&_method=PUT" method="POST">
-            <button class="btn btn-info btn-sm" type="submit">
-              <i class="fas fa-check"></i>
-              Terima
-            </button>
-          </form>
-        </td>
-      </tr>
-      <% } %>
+      <td style="text-align: center">
+        <% if(transaction[i].status === 'pending') { %>
+        <form action="/transaction/status/<%= transaction[i]._id %>?status=success&_method=PUT" method="POST" style="display: inline-block">
+          <button href="" class="btn btn-success">
+            <i class="fas fa-check"></i>
+            Accept
+          </button>
+        </form>
+        <form action="/transaction/status/<%= transaction[i]._id %>?status=failed&_method=PUT" method="POST" style="display: inline-block">
+          <button href="" class="btn btn-danger">
+            <i class="fas fa-times-circle"></i>
+            Decline
+          </button>
+        </form>
+        <% } else if( transaction[i].status === 'failed' ){%>
+        <form action="/transaction/edit/<%= transaction[i]._id %>?_method=PUT" method="POST" style="display: inline-block">
+          <button href="" class="btn btn-secondary">
+            <i class="fas fa-pencil"></i>
+            Details
+          </button>
+        </form>
+        <% } else { %> - <% } %>
+      </td>
+    </tr>
+    <% } %>
   </tbody>
 </table>
