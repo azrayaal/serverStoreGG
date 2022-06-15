@@ -1,6 +1,7 @@
 const Voucher = require('./model');
 const Category = require('../category/model');
 const Nominal = require('../nominal/model');
+const Payment = require('../payment/model');
 const path = require('path');
 const fs = require('fs');
 const config = require('../../config');
@@ -30,9 +31,11 @@ module.exports = {
     try {
       const category = await Category.find();
       const nominal = await Nominal.find();
+      const payment = await Payment.find();
       res.render('admin/voucher/create', {
         category,
         nominal,
+        payment,
         name: req.session.user.name,
         title: 'Halaman tambah voucher',
       });
