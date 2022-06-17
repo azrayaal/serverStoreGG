@@ -2,6 +2,7 @@ const Voucher = require('./model');
 const Category = require('../category/model');
 const Nominal = require('../nominal/model');
 const Payment = require('../payment/model');
+const Bank = require('../bank/model');
 const path = require('path');
 const fs = require('fs');
 const config = require('../../config');
@@ -13,11 +14,13 @@ module.exports = {
       const alertStatus = req.flash('alertStatus');
 
       const alert = { message: alertMessage, status: alertStatus };
-      const voucher = await Voucher.find().populate('category').populate('nominals');
+      const voucher = await Voucher.find().populate('category').populate('nominals').populate('payment');
+      const payment = await Payment.find().populate('banks');
 
       res.render('admin/voucher/view_voucher', {
         voucher,
         alert,
+        payment,
         name: req.session.user.name,
         title: 'Halaman voucher',
       });
@@ -31,7 +34,7 @@ module.exports = {
     try {
       const category = await Category.find();
       const nominal = await Nominal.find();
-      const payment = await Payment.find();
+      const payment = await Payment.find().populate('banks');
       res.render('admin/voucher/create', {
         category,
         nominal,
@@ -48,7 +51,7 @@ module.exports = {
 
   actionCreate: async (req, res) => {
     try {
-      const { name, category, nominals } = req.body;
+      const { name, category, nominals, payment, banks } = req.body;
 
       if (req.file) {
         let tmp_path = req.file.path;
@@ -67,6 +70,8 @@ module.exports = {
               name,
               category,
               nominals,
+              payment,
+              banks,
               thumbnail: filename,
             });
 
@@ -87,6 +92,8 @@ module.exports = {
           name,
           category,
           nominals,
+          payment,
+          banks,
         });
 
         await voucher.save();
@@ -108,12 +115,14 @@ module.exports = {
       const { id } = req.params;
       const category = await Category.find();
       const nominal = await Nominal.find();
+      const payment = await Payment.find().populate('banks');
       const voucher = await Voucher.findOne({ _id: id }).populate('category').populate('nominals');
 
       res.render('admin/voucher/edit', {
         voucher,
         nominal,
         category,
+        payment,
         name: req.session.user.name,
         title: 'Halaman ubah voucher',
       });
@@ -127,7 +136,7 @@ module.exports = {
   actionEdit: async (req, res) => {
     try {
       const { id } = req.params;
-      const { name, category, nominals } = req.body;
+      const { name, category, nominals, payment, banks } = req.body;
 
       if (req.file) {
         let tmp_path = req.file.path;
@@ -157,6 +166,8 @@ module.exports = {
                 name,
                 category,
                 nominals,
+                payment,
+                banks,
                 thumbnail: filename,
               }
             );
@@ -180,6 +191,8 @@ module.exports = {
             name,
             category,
             nominals,
+            payment,
+            banks,
           }
         );
 

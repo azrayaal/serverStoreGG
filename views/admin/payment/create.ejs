@@ -52,7 +52,7 @@
                       <select name="banks" class="form-control" id="banks" data-placeholder="Pilih jenis bank" required>
                         <!-- <option value="" selected></option> -->
                         <% banks.forEach(bank => { %>
-                        <option value="<%= bank._id %>"><%= bank.name %>-<%= bank.nameBank %>-<%= bank.noRekening %></option>
+                        <option value="<%= bank._id %>"><%= bank.name %>-<%= bank.bankName %>-<%= bank.noRekening %></option>
                         <% }); %>
                       </select>
                     </div>
