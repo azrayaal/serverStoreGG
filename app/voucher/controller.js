@@ -15,7 +15,7 @@ module.exports = {
 
       const alert = { message: alertMessage, status: alertStatus };
       const voucher = await Voucher.find().populate('category').populate('nominals').populate('payment');
-      const payment = await Payment.find().populate('banks');
+      const payment = await Payment.find();
 
       res.render('admin/voucher/view_voucher', {
         voucher,
@@ -34,7 +34,7 @@ module.exports = {
     try {
       const category = await Category.find();
       const nominal = await Nominal.find();
-      const payment = await Payment.find().populate('banks');
+      const payment = await Payment.find();
       res.render('admin/voucher/create', {
         category,
         nominal,
@@ -51,7 +51,7 @@ module.exports = {
 
   actionCreate: async (req, res) => {
     try {
-      const { name, category, nominals, payment, banks } = req.body;
+      const { name, category, nominals, payment } = req.body;
 
       if (req.file) {
         let tmp_path = req.file.path;
@@ -71,7 +71,6 @@ module.exports = {
               category,
               nominals,
               payment,
-              banks,
               thumbnail: filename,
             });
 
@@ -93,14 +92,12 @@ module.exports = {
           category,
           nominals,
           payment,
-          banks,
         });
 
         await voucher.save();
 
         req.flash('alertMessage', 'Berhasil tambah voucher');
         req.flash('alertStatus', 'success');
-
         res.redirect('/voucher');
       }
     } catch (err) {
@@ -115,7 +112,7 @@ module.exports = {
       const { id } = req.params;
       const category = await Category.find();
       const nominal = await Nominal.find();
-      const payment = await Payment.find().populate('banks');
+      const payment = await Payment.find();
       const voucher = await Voucher.findOne({ _id: id }).populate('category').populate('nominals');
 
       res.render('admin/voucher/edit', {
@@ -136,7 +133,7 @@ module.exports = {
   actionEdit: async (req, res) => {
     try {
       const { id } = req.params;
-      const { name, category, nominals, payment, banks } = req.body;
+      const { name, category, nominals, payment } = req.body;
 
       if (req.file) {
         let tmp_path = req.file.path;
@@ -167,7 +164,7 @@ module.exports = {
                 category,
                 nominals,
                 payment,
-                banks,
+
                 thumbnail: filename,
               }
             );
@@ -192,7 +189,6 @@ module.exports = {
             category,
             nominals,
             payment,
-            banks,
           }
         );
 
