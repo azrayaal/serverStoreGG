@@ -37,8 +37,11 @@ let playerSchema = mongoose.Schema(
       enum: ['Y', 'N'],
       default: 'Y',
     },
+
     avatar: { type: String },
+
     fileName: { type: String },
+
     phoneNumber: {
       type: String,
       require: [true, 'nomor telpon harus diisi'],
