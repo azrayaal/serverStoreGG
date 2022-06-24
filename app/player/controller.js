@@ -50,7 +50,7 @@ module.exports = {
 
       res.status(200).json({ data: category });
     } catch (err) {
-      res.status(500).json({ message: err.message || `Internal server error` });
+      res.status(500).json({ message: err.message || `category ga masuk` });
     }
   },
 

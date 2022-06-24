@@ -100,7 +100,7 @@ module.exports = {
       })
       .catch((err) => {
         res.status(500).json({
-          message: err.message || `gabisa ngirim nih`,
+          message: err.message || `Internal server error`,
         });
 
         next();
