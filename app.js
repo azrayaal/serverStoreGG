@@ -52,7 +52,7 @@ app.use('/voucher', voucherRouter);
 app.use('/bank', bankRouter);
 app.use('/payment', paymentRouter);
 app.use('/transaction', transactionRouter);
-app.use(express.static('./public'));
+app.use(express.static('/uploads'));
 app.use('/uploads', express.static('uploads'));
 
 // api
