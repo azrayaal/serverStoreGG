@@ -53,7 +53,7 @@ app.use('/bank', bankRouter);
 app.use('/payment', paymentRouter);
 app.use('/transaction', transactionRouter);
 // app.use(express.static('/uploads'));
-app.use('/static', express.static('public'));
+app.use('/static', express.static('uploads'));
 // app.use('/uploads', express.static('uploads'));
 
 // api
