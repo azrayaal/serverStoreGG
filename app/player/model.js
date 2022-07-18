@@ -49,10 +49,10 @@ let playerSchema = mongoose.Schema(
       minlength: [9, 'panjang nomor telpon harus antara 9 - 13 karakter'],
     },
 
-    // favorite: {
-    //   type: mongoose.Schema.Types.ObjectId,
-    //   ref: 'Category',
-    // },
+    favorite: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Category',
+    },
   },
   { timestamps: true }
 );
