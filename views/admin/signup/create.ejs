@@ -1,0 +1,105 @@
+<%- include ../../partials/header.ejs %> <%- include ../../partials/navbar.ejs %> <%- include ../../partials/sidebar.ejs %>
+
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>User</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/signup/create">User</a></li>
+            <li class="breadcrumb-item active">Create</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <!-- /.card-header -->
+            <div class="card-body">
+              <div class="card card-primary">
+                <div class="card-header">
+                  <h3 class="card-title">Form tambah user</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form action="/signup/create" method="POST">
+                  <div class="card-body">
+                    <div class="form-group">
+                      <label for="name">Masukan Nama</label>
+                      <input type="text" name="name" class="form-control" id="" placeholder="masukan nama" required />
+                    </div>
+                    <div class="form-group">
+                      <label for="email">Masukan Email</label>
+                      <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="masukan nama category" required />
+                    </div>
+                    <div class="form-group">
+                      <label for="password">Masukan Password</label>
+                      <input type="password" name="password" class="form-control" id="pwd" placeholder="masukan nama category" required />
+                    </div>
+                    <input type="checkbox" class="my-3" onclick="myFunction()" /> Show Password
+                    <div class="select2-purple">
+                      <label for="role">Role</label>
+                      <select class="form-control" data-placeholder="Pilih nominal" style="width: 100%" name="role" required>
+                        <option value="admin">Admin</option>
+                        <option value="user">User</option>
+                      </select>
+                    </div>
+                    <div class="select2-purple">
+                      <label for="status">Status</label>
+                      <select class="form-control" data-placeholder="Pilih nominal" style="width: 100%" name="status" required>
+                        <option value="Y">Y</option>
+                        <option value="N">N</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="phoneNumber">Phone Number</label>
+                      <input type="number" name="phoneNumber" class="form-control" placeholder="masukan nomor telephone" required />
+                    </div>
+                  </div>
+
+                  <div class="card-footer">
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Simpan</button>
+                    <button type="submit" class="btn btn-secondary">
+                      <a href="/signup" style="color: white"><i class="fa fa-undo"></i> Cancel</a>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- /.card -->
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+
+<script>
+  function myFunction() {
+    var x = document.getElementById('pwd');
+    if (x.type === 'password') {
+      x.type = 'text';
+    } else {
+      x.type = 'password';
+    }
+  }
+</script>
+
+<%- include ../../partials/footer.ejs %> <%- include ../../partials/js.ejs %>
