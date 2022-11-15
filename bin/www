@@ -12,7 +12,9 @@ const db = require('../db');
 /**
  * Get port from environment and store in Express.
  */
-
+// dev
+// var port = normalizePort(process.env.PORT || '4000');
+// deploy
 var port = normalizePort(process.env.PORT || '4000');
 app.set('port', port);
 

@@ -38,6 +38,7 @@ module.exports = {
               status: check.status,
               name: check.name,
             };
+
             res.redirect('/dashboard');
           } else {
             req.flash('alertMessage', `Kata sandi yang anda inputkan salah`);

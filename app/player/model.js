@@ -38,7 +38,7 @@ let playerSchema = mongoose.Schema(
       default: 'Y',
     },
 
-    avatar: { type: String },
+    image: { type: String },
 
     fileName: { type: String },
 

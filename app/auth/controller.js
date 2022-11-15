@@ -1,4 +1,5 @@
 const Player = require('../player/model');
+const Category = require('../category/model');
 const path = require('path');
 const fs = require('fs');
 const config = require('../../config');
@@ -23,7 +24,7 @@ module.exports = {
 
         src.on('end', async () => {
           try {
-            const player = new Player({ ...payload, avatar: filename });
+            const player = new Player({ ...payload, image: filename });
 
             await player.save();
 
@@ -78,7 +79,7 @@ module.exports = {
                   email: player.email,
                   nama: player.nama,
                   phoneNumber: player.phoneNumber,
-                  avatar: player.avatar,
+                  image: player.image,
                 },
               },
               config.jwtKey
