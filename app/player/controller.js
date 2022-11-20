@@ -213,7 +213,7 @@ module.exports = {
         username: req.player.username,
         email: req.player.email,
         name: req.player.name,
-        image: req.player.image,
+        avatar: req.player.avatar,
         phone_number: req.player.phoneNumber,
       };
 

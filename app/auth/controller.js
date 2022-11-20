@@ -24,7 +24,7 @@ module.exports = {
 
         src.on('end', async () => {
           try {
-            const player = new Player({ ...payload, image: filename });
+            const player = new Player({ ...payload, avatar: filename });
 
             await player.save();
 
@@ -79,7 +79,7 @@ module.exports = {
                   email: player.email,
                   nama: player.nama,
                   phoneNumber: player.phoneNumber,
-                  image: player.image,
+                  avatar: player.avatar,
                 },
               },
               config.jwtKey
