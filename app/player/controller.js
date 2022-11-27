@@ -179,7 +179,7 @@ module.exports = {
         {
           $group: {
             _id: '$category',
-            valeu: { $sum: '$value' },
+            value: { $sum: '$value' },
           },
         },
       ]);
