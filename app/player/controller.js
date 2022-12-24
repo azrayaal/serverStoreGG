@@ -58,7 +58,7 @@ module.exports = {
     try {
       const { accountUser, name, nominal, voucher, payment, bank } = req.body;
 
-      const res_voucher = await Voucher.findOne({ _id: voucher }).select('name caegory _id thumbnail user').populate('category').populate('user');
+      const res_voucher = await Voucher.findOne({ _id: voucher }).select('name category _id thumbnail user').populate('category').populate('user');
       if (!res_voucher) return res.status(404).json({ message: 'voucher game tidak ditemukan.' });
 
       const res_nominal = await Nominal.findOne({ _id: nominal });
@@ -321,7 +321,7 @@ module.exports = {
       const voucher = await Voucher.findOne({ _id: id });
 
       if (!voucher) {
-        return res.status(404).json({ message: 'voucher game tidak ditemukan.!' });
+        return res.status(404).json({ message: 'voucher game tidak ditemukan!' });
       }
 
       res.status(200).json({ data: voucher });
