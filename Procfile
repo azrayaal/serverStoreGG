@@ -1,1 +1,1 @@
-web: env-cmd -f ./.env node ./bin/www
+web:env-cmd -f ./.env node ./bin/www
