@@ -3,8 +3,12 @@
   "author": "azrayaal",
   "version": "0.0.1",
   "private": true,
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "start": "node ./bin/www",
+    "test": "node ./bin/www",
     "dev": "env-cmd -f ./.env.local nodemon ./bin/www",
     "pro": "env-cmd -f ./.env nodemon ./bin/www"
   },
@@ -23,6 +27,7 @@
     "express-session": "^1.17.3",
     "gitignore": "^0.7.0",
     "http-errors": "~1.6.3",
+    "install-peers": "^1.0.4",
     "jsonwebtoken": "^8.5.1",
     "method-override": "^3.0.0",
     "mongoose": "^6.8.1",
