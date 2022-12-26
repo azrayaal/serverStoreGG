@@ -7,9 +7,9 @@
     "node": "14.x"
   },
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "env-cmd -f ./.env node ./bin/www",
     "test": "node ./bin/www",
-    "dev": "env-cmd -f ./.env.local nodemon ./bin/www",
+    "dev": "env-cmd -f ./.env nodemon ./bin/www",
     "pro": "env-cmd -f ./.env nodemon ./bin/www"
   },
   "dependencies": {
