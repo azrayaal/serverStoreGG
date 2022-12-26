@@ -7,7 +7,7 @@
     "node": "16.14.2"
   },
   "scripts": {
-    "start": "env-cmd -f ./.env node ./bin/www",
+    "start": "./bin/www",
     "test": "node ./bin/www",
     "dev": "env-cmd -f ./.env nodemon ./bin/www",
     "pro": "env-cmd -f ./.env nodemon ./bin/www"
