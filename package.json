@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "private": true,
   "engines": {
-    "node": "16.x"
+    "node": "16.14.2"
   },
   "scripts": {
     "start": "env-cmd -f ./.env node ./bin/www",
