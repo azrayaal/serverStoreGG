@@ -1,5 +1,6 @@
 .env.local
 node_modules
 .vscode
+./public/updloads
 
 # package-lock.json
